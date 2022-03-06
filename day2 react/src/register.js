@@ -19,6 +19,7 @@ export default function Register() {
       setLoginForm({
         ...LoginForm, email: e.target.value
       });
+      
       setErrorForm({
         ...LoginError, emailError: e.target.value.length === 0 ? 'this fild is requird' : null,
       });
