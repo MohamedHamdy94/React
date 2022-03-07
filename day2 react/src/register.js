@@ -15,13 +15,17 @@ export default function Register() {
     cpasswordError: null,
   });
   const handelChang = (e) => {
+    const emailRgx = new RegExp(/^[@#][A-Za-z0-9]{7,13}$/)
+
     if (e.target.name === "email") {
       setLoginForm({
         ...LoginForm, email: e.target.value
       });
-      
+
       setErrorForm({
-        ...LoginError, emailError: e.target.value.length === 0 ? 'this fild is requird' : null,
+        ...LoginError, emailError: e.target.value.length === 0 ? 'this fild is requird'
+          : !emailRgx.test(e.target.value) ? 'Email not valid'
+            : null,
       });
 
     } else if (e.target.name === "password") {
@@ -31,14 +35,14 @@ export default function Register() {
       setErrorForm({
         ...LoginError, passwordError: e.target.value.length === 0 ? 'this fild is requird' : e.target.value.length > 8 ? 'not valid' : null,
       });
-    }else if (e.target.name === "yourName") {
+    } else if (e.target.name === "yourName") {
       setLoginForm({
         ...LoginForm, name: e.target.value
       })
       setErrorForm({
         ...LoginError, nameError: e.target.value.length === 0 ? 'this fild is requird' : e.target.value.length > 8 ? 'not valid' : null,
       });
-    }else if (e.target.name === "cpassword") {
+    } else if (e.target.name === "cpassword") {
       setLoginForm({
         ...LoginForm, cpassword: e.target.value
       })
@@ -64,9 +68,9 @@ export default function Register() {
                   <form onSubmit={(e) => handelSubmit(e)}>
 
 
-                                        <div className="form-group">
+                    <div className="form-group">
                       <label htmlFor="exampleInputEmail1">Your Name</label>
-                      <input name='yourName' onChange={(e) => handelChang(e)} type="text" className={`form-control ${LoginError.nameError ? 'border-danger' : ''}`} value={LoginForm.name}   placeholder="Your Name" />
+                      <input name='yourName' onChange={(e) => handelChang(e)} type="text" className={`form-control ${LoginError.nameError ? 'border-danger' : ''}`} value={LoginForm.name} placeholder="Your Name" />
                       <small className="form-text text-danger">
                         {LoginError.nameError}
                       </small>
@@ -85,20 +89,20 @@ export default function Register() {
 
                       <label htmlFor="exampleInputPassword1">Password</label>
                       <input name='password' onChange={(e) => handelChang(e)} type="password" className={`form-control ${LoginError.passwordError ? 'border-danger' : ''}`} value={LoginForm.password} id="exampleInputPassword1" placeholder="Password" />
-                      <small  className="form-text text-danger">
+                      <small className="form-text text-danger">
                         {LoginError.passwordError}
                       </small>
                     </div>
 
                     <label htmlFor="exampleInputPassword1">Repeat your password</label>
-                      <input name='cpassword' onChange={(e) => handelChang(e)} type="password" className={`form-control ${LoginError.cpasswordError ? 'border-danger' : ''}`} value={LoginForm.cpassword} id="exampleInputPassword1" placeholder="Repeat your password" />
-                      <small  className="form-text text-danger">
-                        {LoginError.cpasswordError}
-                      </small>
-                      
+                    <input name='cpassword' onChange={(e) => handelChang(e)} type="password" className={`form-control ${LoginError.cpasswordError ? 'border-danger' : ''}`} value={LoginForm.cpassword} id="exampleInputPassword1" placeholder="Repeat your password" />
+                    <small className="form-text text-danger">
+                      {LoginError.cpasswordError}
+                    </small>
+
 
                     <div className="d-flex justify-content-center">
-                    <button type="submit" className="btn btn-primary m-3">Submit</button>
+                      <button type="submit" className="btn btn-primary m-3">Submit</button>
                     </div>
                   </form>
                 </div>
