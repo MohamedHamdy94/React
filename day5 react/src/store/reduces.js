@@ -13,7 +13,7 @@ export default function fovoritesList(state = INITIAL_STATE, action) {
         case Fovorites_state:
             return {
                 ...state,
-                movieArry: action.payload
+                movieArry:[...state.movieArry, action.payload]
             };
         case Count_state:
             return {

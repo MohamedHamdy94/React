@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 
 // import axios from "axios";
 export default function Fovorites() {
+    
     const movies = useSelector(( state ) => state.movieArry) ; //بمسك الداتا من الستور
+    // let movies= useSelector((state) => state.moveList) // مش فاهم ليه لازم اشيل ريزلت واحطها تاني عشان الداتا تظهر
 
     return (
         <>

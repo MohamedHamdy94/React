@@ -35,7 +35,6 @@ export const movisDitails = (id) => (dispatch) => {
     .get(`https://api.themoviedb.org/3/movie/${id}?api_key=782991eb3d40e097f0473b979b9ae2e0`)
         .then((res) => {
             console.log(res)
-
             dispatch({
                 type: Movies_details,
                 payload: res.data
