@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
-import { addToFovorite, InCount, movis } from "../store/actions";
+import { addToFovorite, InCount, movis, movisLang } from "../store/actions";
 
 export default function MoviesChild() {
     
@@ -15,7 +15,7 @@ export default function MoviesChild() {
     let movies= useSelector((state) => state.moveList) // مش فاهم ليه لازم اشيل ريزلت واحطها تاني عشان الداتا تظهر
 
     useEffect(() => {
-        dipatch(movis())
+        dipatch(movisLang())
     }, []);
     const [isFound, setFound] = useState();
 

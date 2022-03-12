@@ -5,14 +5,20 @@ import './NavBar.css';
 
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { LanguageContext } from './pages/Language/languag';
 import { Button } from 'bootstrap';
+import { movisLang } from './store/actions';
 
 export default function Navebar() {
     const count = useSelector((state) => state.count); //بمسك الداتا من الستور
     const { lang, setlang } = useContext(LanguageContext);
-    // const [lang,setlang] = useState("en");
+    const dipatch = useDispatch();
+
+function changlang(){
+    setlang(lang === 'ar' ? 'en' : 'ar')
+    dipatch(movisLang(lang))
+}
 
     return (
 
@@ -34,7 +40,7 @@ export default function Navebar() {
                             <span className='text-warning ' >{count}</span>
                         </li>
                         <li className="nav-item">
-                            <button className="btn btn-primary mx-3" name='chang Language' onClick={()=> setlang(lang == 'ar' ? 'en' : 'ar')} >chang Language</button>
+                            <button className="btn btn-primary mx-3" name='chang Language' onClick={()=> changlang()} >chang Language</button>
                             {/* <Button  name='chang Language' handleClick={()=> setlang(lang == 'ar' ? 'en' : 'ar')} >chang Language</Button> */}
                             <span  className='text-warning mx-3'> {lang}</span>
 

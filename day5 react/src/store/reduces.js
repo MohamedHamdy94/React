@@ -1,4 +1,4 @@
-import { Fovorites_state, Count_state, Movies_details, Movies_List, } from './actions'
+import { Fovorites_state, Count_state, Movies_details, Movies_List, Movies_Lng, } from './actions'
 const INITIAL_STATE = {
     movieArry: [],
     count: 0,
@@ -13,13 +13,18 @@ export default function fovoritesList(state = INITIAL_STATE, action) {
         case Fovorites_state:
             return {
                 ...state,
-                movieArry:[...state.movieArry, action.payload]
+                movieArry: [...state.movieArry, action.payload]
             };
         case Count_state:
             return {
                 count: action.payload
             };
-        case Movies_List:
+        // case Movies_List:
+        //     return {
+        //         ...state,
+        //         moveList: action.payload,
+        //     };
+        case Movies_Lng:
             return {
                 ...state,
                 moveList: action.payload,

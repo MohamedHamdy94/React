@@ -12,17 +12,19 @@ import Movies from './pages/Movies';
 import Navebar from './Navebar';
 import Details from './pages/Details';
 import { LanguageContext } from './pages/Language/languag';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useSelector } from 'react-redux';
 import Home from './pages/home';
 
 function App() {
-  const [lang,setlang] = useState("en");
+  const [lang,setlang] = useState("ar");
+  // const { lang, setlang } = useContext(LanguageContext);
+
   // const languag =useSelector((state)=>state.languag.lang)
   return (
     <LanguageContext.Provider value={{lang ,setlang}}>
-      <div className={lang==='an'?'text-left':'text-right'}
-      dir={lang==='en' ? 'ltr':'rtl'}
+      <div className={lang==='an'?'text-right':'text-left'}
+      dir={lang==='en' ? 'rtl':'ltr'}
       
       >
 

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector, useDispatch } from "react-redux";
-import { addToFovorite, InCount, movis } from "../store/actions";
+import { addToFovorite, InCount, movisLang } from "../store/actions";
 import MoviesChild from "./movisCihld";
 
 export default function Movies() {
@@ -14,10 +14,10 @@ export default function Movies() {
     // const movies = useSelector(state => state.fovoritesList.moveList); //بمسك الداتا من الستور
     const dipatch = useDispatch();
 
-    let movies = useSelector((state) => state.moveList) // مش فاهم ليه لازم اشيل ريزلت واحطها تاني عشان الداتا تظهر
+    // let movies = useSelector((state) => state.moveList) // مش فاهم ليه لازم اشيل ريزلت واحطها تاني عشان الداتا تظهر
 
     useEffect(() => {
-        dipatch(movis())
+        dipatch(movisLang())
         //     axios
         //         .get(
         //             "https://api.themoviedb.org/3/movie/popular?api_key=782991eb3d40e097f0473b979b9ae2e0"
@@ -29,7 +29,7 @@ export default function Movies() {
         //         .catch((err) => console.log(err));
 
     }, []);
-    const [star, setStar] = useState();
+    // const [star, setStar] = useState();
     let count = useSelector((state) => state.count); //بمسك الداتا من الستور
     console.log(count)
     // const movi = useSelector((state) => state.movieArry); //بمسك الداتا من الستور
